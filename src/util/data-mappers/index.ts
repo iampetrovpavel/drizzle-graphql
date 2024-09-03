@@ -25,7 +25,7 @@ export const remapToGraphQLCore = (
 				relationMap,
 			);
 		}
-		if (column.columnType === 'PgGeometry' || column.columnType === 'PgVector') return value;
+		if (column.columnType === 'PgGeometry' || column.columnType === 'PgVector' || column.columnType === 'PgJson') return value;
 
 		return value.map((arrVal) => remapToGraphQLCore(key, arrVal, tableName, column, relationMap));
 	}
