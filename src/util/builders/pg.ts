@@ -77,8 +77,10 @@ const generateSelectArray = (
 				const parsedInfo = parseResolveInfo(info, {
 					deep: true,
 				}) as ResolveTree;
+				
+				const customQueryBase = context?.db?.query[tableName] || queryBase;
 
-				const query = queryBase.findMany({
+				const query = customQueryBase.findMany({
 					columns: extractSelectedColumnsFromTree(
 						parsedInfo.fieldsByTypeName[typeName]!,
 						table,
